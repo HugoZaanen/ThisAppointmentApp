@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ThisAppointmentApp"
+             mc:Ignorable="d"
+             x:Class="ThisAppointmentApp.AppointmentView">
+    <ContentPage.Content>
+        <FlexLayout Direction="column">
+            <Frame BorderColor="Black" FlexLayout.Grow="0.4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding DateTime, StringFormat='{0:T}'}" 
+                           TextColor="black" Grid.Column="1" FontSize="20" HorizontalTextAlignment="End">
+                        <Label.BindingContext>
+                            <local:ClockViewModel/>
+                        </Label.BindingContext>
+                    </Label>
+                    <Label Text="Hello" TextColor="black" FontSize="20" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="1" x:Name="NextOccupied"/>
+                    <Label Text="Hello" x:Name="Name" TextColor="Black" FontSize="15" Grid.Row="1"/>
+                    <Label Text="Location" x:Name="Location" TextColor="black" Grid.Row="2"/>
+                    <Label Text="equipment" x:Name="Equipment" TextColor="black" Grid.Row="3"/>
+                </Grid>
+            </Frame>
+            <FlexLayout FlexLayout.Grow="1" Direction="Column" >
+                <Frame BorderColor="black" FlexLayout.Grow="1">
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Start" TextColor="Black" FontSize="20" Grid.Row="0"/>
+                            <Label x:Name="StartTime" TextColor="Black" FontSize="20" Text="Time" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="End" TextColor="Black" FontSize="20" Grid.Row="1" />
+                            <Label x:Name="EndTime" Text="Time" TextColor="Black" FontSize="20" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame FlexLayout.Basis="300" BorderColor="black">
+                    <StackLayout>
+                        <Label Text="Participants" TextColor="Black" FontSize="12"/>
+                        <ListView FlowDirection="LeftToRight" x:Name="attendeesList" Grid.Row="1"/>
+                    </StackLayout>
+                </Frame>
+            </FlexLayout>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

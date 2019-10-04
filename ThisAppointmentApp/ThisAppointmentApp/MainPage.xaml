@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ThisAppointmentApp.MainPage">
+
+    <StackLayout>
+        <ListView x:Name="list" ItemsSource="{Binding Meetings}" RowHeight="100">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinitionCollection/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Start, StringFormat='{0:hh:mm}'}"/>
+                            <Label Text="{Binding End, StringFormat='{0:hh:mm}'}" Grid.Row="1"/>
+                            <Label Text="{Binding Location}" Grid.Row="2"/>
+                            <Label Text="{Binding Name}" Grid.Row="3"/>
+                            <Label Text="{Binding Attendees}" Grid.Row="4"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

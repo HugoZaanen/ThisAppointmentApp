@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ThisAppointmentApp.Views.WeekOverzicht"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=SyncFusion.SfSchedule.XForms"
+             xmlns:local="clr-namespace:ThisAppointmentApp">
+    <ContentPage.Content>
+        <syncfusion:SfSchedule x:Name="schedule" ScheduleView="WeekView">
+            <syncfusion:SfSchedule.WeekViewSettings>
+                <!--setting working hours properties -->
+                <syncfusion:WeekViewSettings
+            WorkStartHour="8.0"
+            WorkEndHour="18.5">
+                    <syncfusion:WeekViewSettings.WeekLabelSettings>
+                        <syncfusion:WeekLabelSettings TimeFormat="hh:mm" />
+                    </syncfusion:WeekViewSettings.WeekLabelSettings>
+                </syncfusion:WeekViewSettings>
+            </syncfusion:SfSchedule.WeekViewSettings>
+        </syncfusion:SfSchedule>
+    </ContentPage.Content>
+</ContentPage>
