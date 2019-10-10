@@ -8,7 +8,8 @@ namespace ThisAppointmentApp
     {
         public App()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            MainPageViewModel mainpageModel = new MainPageViewModel();
             MainPage = new ThisAppointmentTab();
         }
 

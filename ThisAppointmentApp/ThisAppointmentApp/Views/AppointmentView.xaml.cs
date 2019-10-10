@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,10 +16,9 @@ namespace ThisAppointmentApp
         {
             InitializeComponent();
             MainPageViewModel model = new MainPageViewModel();
-
             List<Meeting> meeting = model.Meetings;
             Meeting meet = null;
-                      
+
             Name.Text = meeting[0].Name;
             Location.Text = meeting[0].Location;
             StartTime.Text = meeting[0].Start.ToString("hh:mm");

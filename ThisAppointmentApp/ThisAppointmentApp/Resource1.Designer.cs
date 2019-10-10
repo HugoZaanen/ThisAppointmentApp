@@ -63,9 +63,10 @@ namespace ThisAppointmentApp {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Meetings_letstalk_nl_9e0i37n5ka7p3f3rnc4ucr52tg_group_calendar_google_com {
+        internal static byte[] Hugo_TestCalendar_letstalk_nl_5viiu8st1brvbgdcamkrdnutrs_group_calendar_google_com {
             get {
-                object obj = ResourceManager.GetObject("Meetings_letstalk_nl_9e0i37n5ka7p3f3rnc4ucr52tg_group_calendar_google_com", resourceCulture);
+                object obj = ResourceManager.GetObject("Hugo_TestCalendar_letstalk_nl_5viiu8st1brvbgdcamkrdnutrs_group_calendar_google_co" +
+                        "m", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -16,7 +16,7 @@ namespace ThisAppointmentApp
         {
             get { return location; }
             private set {
-                location = value ?? "NVT";
+                location = value ?? "NVA";
             }
         }
         public string Name
@@ -27,7 +27,7 @@ namespace ThisAppointmentApp
             }
             private set 
             {
-                if (value == "VEVENT")
+                if (value.ToString() == "VEVENT")
                 {
                     _name = Summary == null ? Summary: "Bleekstraat 3";
                 }
@@ -43,21 +43,19 @@ namespace ThisAppointmentApp
 
         public string StartEnd { get { return Start.ToString("hh:mm") + "-" + End.ToString("hh:mm"); } }
         
-
         public Meeting(DateTime start, DateTime end, IList<Attendee> attendees, string location, string name,string summary)
         {
             Start = start;
             End = end;
             Attendees = attendees;
             Location = location;
-            Name = name;
             Summary = summary;
+            Name = name;
         }
 
         public override string ToString()
         {
             return _name + "\n" + Location + "\n" + Start.ToString() + "/" + End.ToString();
-        }
-               
+        }               
     }
 }

@@ -8,7 +8,7 @@ namespace ThisAppointmentApp
 {
     class MainPageViewModel : INotifyPropertyChanged
     {
-        private IcsClient _client;
+        public IcsClient _client;
          
         public MainPageViewModel()
         {

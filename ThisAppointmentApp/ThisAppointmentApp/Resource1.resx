@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Meetings_letstalk_nl_9e0i37n5ka7p3f3rnc4ucr52tg_group_calendar_google_com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Meetings_letstalk.nl_9e0i37n5ka7p3f3rnc4ucr52tg@group.calendar.google.com.ics;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Hugo_TestCalendar_letstalk_nl_5viiu8st1brvbgdcamkrdnutrs_group_calendar_google_com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Hugo TestCalendar_letstalk.nl_5viiu8st1brvbgdcamkrdnutrs@group.calendar.google.com.ics;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

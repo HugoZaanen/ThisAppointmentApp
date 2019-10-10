@@ -1,5 +1,7 @@
 ﻿using Ical.Net;
+using Ical.Net.DataTypes;
 using Ical.Net.Interfaces;
+using Ical.Net.Interfaces.DataTypes;
 using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
@@ -20,41 +22,51 @@ namespace ThisAppointmentApp
 
         public IcsClient(string url)
         {
-            using (MemoryStream stream = new MemoryStream(Resource1.Meetings_letstalk_nl_9e0i37n5ka7p3f3rnc4ucr52tg_group_calendar_google_com))
+            using (MemoryStream stream = new MemoryStream(Resource1.Hugo_TestCalendar_letstalk_nl_5viiu8st1brvbgdcamkrdnutrs_group_calendar_google_com))
             {
                 calendar = Ical.Net.Calendar.LoadFromStream(stream).First();
             }
             foreach(var calEvent in calendar.Events)
-            {
-                if (calEvent.Start.Year == DateTime.Now.Year && calEvent.Start.Month == DateTime.Now.Month)
-                {
-                    IList<Ical.Net.Interfaces.DataTypes.IAttendee> attendees = calEvent.Attendees;
-                    List<Attendee> attending = new List<Attendee>();
-                                      
-                    DateTime dateStart = new DateTime();
-                    DateTime dateEnd = new DateTime();
-                
-                try
-                {
-                   dateStart = DateTime.Parse(calEvent.Start.ToString().Remove(calEvent.Start.ToString().IndexOf('M') + 1));
-                   dateEnd = DateTime.Parse(calEvent.End.ToString().Remove(calEvent.End.ToString().IndexOf('M') + 1));
-                }
-                catch(Exception ex)
-                {
-                    dateStart = calEvent.End == null ? DateTime.Parse(calEvent.Start.ToString().Remove(calEvent.Start.ToString().IndexOf('M') + 1)) : DateTime.Parse(calEvent.Start.ToString());
-                    dateEnd = calEvent.End == null ? dateStart.AddHours(1) : DateTime.Parse(calEvent.End.ToString());
-                }   
-                
+            {               
+                IList<Ical.Net.Interfaces.DataTypes.IAttendee> attendees = calEvent.Attendees;
+                List<Attendee> attending = new List<Attendee>();
+                                
+                DateTime dateStart = new DateTime(calEvent.Start.Ticks);
+                DateTime dateEnd = new DateTime(calEvent.End.Ticks);
+                                   
                 foreach (var a in attendees)
                 {
-                    Attendee attender = new Attendee();
+                    Attendee attender = new Attendee();                   
                     attender.Name = a.Value.UserInfo;
                     attender.Email = a.CommonName;
                     attending.Add(attender);
                 }
-                    Meetings.Add(new Meeting(dateStart, dateEnd, attending, calEvent.Location, calEvent.Name, calEvent.Summary));
-                    ScheduleAppointments.Add(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary });
+
+                var ev = calEvent.RecurrenceDates;
+                var ve = new List<IRecurrencePattern>(calEvent.RecurrenceRules.AsEnumerable());
+                var pattern = ve.FirstOrDefault();
+                var ex = pattern?.Frequency;
+                var ex1 = pattern?.ByDay[0].DayOfWeek;
+                //var ex2 = pattern.ByDay.Select(s => s.);
+                var ka = calEvent.RecurrenceId;
+
+                if(calEvent.RecurrenceRules.Count == 1)
+                {
+                    RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
+                    recurrenceProperties.RecurrenceType = (RecurrenceType)pattern.Frequency;
+                    //recurrenceProperties.WeekDays =; 
                 }
+
+                //RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
+                //recurrenceProperties.RecurrenceType = ;
+                //recurrenceProperties.RecurrenceType = (RecurrenceType)pattern.Frequency;
+                //var Recurrency = calEvent.Properties;
+
+                ScheduleAppointment appointment = new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, };
+                
+                Meetings.Add(new Meeting(dateStart, dateEnd, attending, calEvent.Location, calEvent.Name, calEvent.Summary));
+                ScheduleAppointments.Add(appointment);
+                
             }                     
         }
 
@@ -74,22 +86,6 @@ namespace ThisAppointmentApp
             }
 
             return null;
-        }
-
-        public int Whitespacing(string s)
-        {
-            int count = 0;
-            int index = 0;
-            foreach (char c in s)
-            {
-                count++;
-                if (c == ' ')
-                {
-                    index = count;
-                }
-            }
-
-            return index;
         }
     }
 }
