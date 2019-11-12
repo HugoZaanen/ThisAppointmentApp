@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ThisAppointmentApp.GoogleClient" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAEACAQAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Controls\GoogleClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.IcsClient" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAQAAAAAAAAAAAEAQAAAAAAAAAIAAAQAA=</HashCode>
+      <FileName>Controls\IcsClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.Attendee" Collapsed="true">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Attendee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.ClockViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAhAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\ClockViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ThisAppointmentApp.MainPageViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAEAAIEAAAAAAgAAAAAAAAAAAIAAAQAA=</HashCode>
+      <FileName>Models\MainPageViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ThisAppointmentApp.Meeting" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAIAAAAiAAAAAEAAIABAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Meeting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.AppointmentView" Collapsed="true">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AppointmentView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.DayOverview" Collapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DayOverview.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.ThisAppointmentTab" Collapsed="true">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ThisAppointmentTab.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.App" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.MainPage" Collapsed="true">
+    <Position X="3.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.Resource1" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACBEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.Models.AppointmentModel" Collapsed="true">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAACAA=</HashCode>
+      <FileName>Models\AppointmentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.Controls.Calendar" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAUAAAABAAAAAAABAAAAAQAAAAAEAAAA=</HashCode>
+      <FileName>Models\Calendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ThisAppointmentApp.Views.WeekOverzicht" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\WeekOverzicht.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

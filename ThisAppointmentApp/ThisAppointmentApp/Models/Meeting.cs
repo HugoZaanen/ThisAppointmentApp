@@ -1,5 +1,4 @@
 ﻿using Google.Apis.Calendar.v3.Data;
-using Ical.Net.Interfaces.DataTypes;
 using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;

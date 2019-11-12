@@ -14,36 +14,16 @@
                     <local:ClockViewModel/>
                 </Label.BindingContext>
             </Label>
-            <ListView SelectionMode="None" x:Name="list" ItemsSource="{Binding Meetings}" RowHeight="100">
+            <ListView x:Name="list" RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="250"/>
-                                </Grid.ColumnDefinitions>
-                                <FlexLayout Direction="Column"  Grid.Column="0">
-                                    <Label Text="{Binding StartEnd}"/>
-                                    <Label Text="{Binding Name}"/>
-                                    <Label Text="{Binding Location}"/>
-                                </FlexLayout>
-                                <FlexLayout Direction="Row" Grid.Column="1">
-                                    <CollectionView ItemsSource="{Binding Attendees}" 
-                                                    HorizontalScrollBarVisibility="Never" IsEnabled="False" 
-                                                    FlowDirection="LeftToRight">
-                                        <CollectionView.ItemsLayout>
-                                            <GridItemsLayout Orientation="Vertical"
-                                                             Span="5" VerticalItemSpacing="1"/>
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Label FontSize="10" TextColor="black" Text="{Binding Name}"/>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </FlexLayout>
-                            </Grid>
+                            <StackLayout>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}"/>
+                                <Label Text="{Binding EndTime, StringFormat='{0:hh\\:mm}'}"/>
+                                <Label Text="{Binding Location}"/>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

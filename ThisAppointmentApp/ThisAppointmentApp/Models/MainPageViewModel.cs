@@ -3,6 +3,7 @@ using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using ThisAppointmentApp.Models;
 
 namespace ThisAppointmentApp
 {
@@ -70,6 +71,11 @@ namespace ThisAppointmentApp
             }
         }
 
+        public List<AppointmentModel> GetAppointments()
+        {
+            return _client.AppointmentModels;
+        }
+
         private List<ScheduleAppointment> _scheduleAppointments;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -79,8 +85,6 @@ namespace ThisAppointmentApp
             var handler = PropertyChanged;
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        
+        }        
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ThisAppointmentApp.Models;
 
 namespace ThisAppointmentApp.Controls
 {
@@ -9,14 +10,12 @@ namespace ThisAppointmentApp.Controls
     {
         private static Calendar instance = null;
         private IcsClient _client;
-        List<Meeting> _meetings;
-        List<ScheduleAppointment> _scheduleAppointments;
+        List<AppointmentModel> appointments = new List<AppointmentModel>();
         
         public Calendar()
         {
             _client = new IcsClient("https://calendar.google.com/calendar/ical/hugo%40letstalk.nl/public/basic.ics");
-            _meetings = _client.Meetings;
-            _scheduleAppointments = _client.ScheduleAppointments;
+            //appointments.Add(_client.GetModels());           
         }
 
         public static Calendar Instance
@@ -48,12 +47,7 @@ namespace ThisAppointmentApp.Controls
                 _appointmentView = new AppointmentView();
             }
         }
-
-
-
-        public List<Meeting> ReturnMeetings()
-        {
-            return _meetings;
-        }
+        
+        public 
     }
 }

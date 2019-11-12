@@ -27,7 +27,7 @@ namespace ThisAppointmentApp
             UserCredential credential = null;
             //var path = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string credPath = "/data/user/0/com.companyname.ThisAppointmentApp/files/token.json";
-            // Je stored nu token.json waar je nit mag storen.
+            // Je stored nu token.json waar je niet mag storen.
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(_credentials)))
             {
                 var secrets = GoogleClientSecrets.Load(stream);
