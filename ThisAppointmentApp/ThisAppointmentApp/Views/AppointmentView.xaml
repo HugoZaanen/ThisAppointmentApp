@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="ThisAppointmentApp.AppointmentView">
     <ContentPage.Content>
-        <FlexLayout Direction="column">
+        <FlexLayout Direction="Column">
             <Frame BorderColor="Black" FlexLayout.Grow="0.4">
                 <Grid>
                     <Grid.ColumnDefinitions>

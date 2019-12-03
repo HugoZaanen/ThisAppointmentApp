@@ -55,16 +55,9 @@ namespace ThisAppointmentApp
                     if (calEvent.RecurrenceRules != null && calEvent.RecurrenceRules.Count != 0)
                     {
                         var RecRule = new List<RecurrencePattern>(calEvent.RecurrenceRules.AsEnumerable());
-                        var pattern = RecRule.FirstOrDefault();
-                        var pat  = pattern.ByDay;
-                        var pat1 = pattern.ByMonthDay;
-                        var pat2 = pattern.Calendar;                       
-                        var pat4 = pattern.Frequency;
-                        var pat5 = pattern.Interval;
-
+                        var pattern = RecRule.FirstOrDefault();                       
                         string stringPattern = pattern?.ToString();
                         var ex = pattern?.Frequency;
-
                         RecurrenceProperties recurrenceProperties = new RecurrenceProperties();
                         recurrenceProperties.RecurrenceType = (RecurrenceType)calEvent.RecurrenceRules[0].Frequency;
                        
@@ -76,12 +69,12 @@ namespace ThisAppointmentApp
                         }
                        
                         appointment = new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location};
-                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location },attending));
+                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location },attending,stringPattern));
                     }
                     else
                     {
                         appointment = new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location };
-                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location },attending));
+                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location },attending,null));
                     }
 
                     ScheduleAppointments.Add(appointment);
@@ -110,7 +103,6 @@ namespace ThisAppointmentApp
                     return meeting = meet;
                 }
             }
-
             return null;
         }       
     }

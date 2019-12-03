@@ -13,49 +13,74 @@ namespace ThisAppointmentApp.Models
         private List<Attendee> _attendees {get;set;}
         private string _location { get; set; }
         private ScheduleAppointment _appointment { get; set; }
-       
-        public AppointmentModel(ScheduleAppointment scheduleAppointment, List<Attendee> attendees)
+        private string _requerencePattern { get; set; }
+        private string _equipment { get; set; }
+        
+        public AppointmentModel(ScheduleAppointment scheduleAppointment, List<Attendee> attendees,string requerencePattern)
         {
             _appointment = scheduleAppointment;
             Name = Name;
             StartTime = StartTime;
             EndTime = EndTime;
             Location = Location;
+            RequerencePattern = requerencePattern;
             _attendees = attendees;
         }
         
+        public AppointmentModel()
+        {}
+
         public string Name
         {
             get { return _name; }
-            set { _name = _appointment.Subject; }
+            set 
+            {
+                _name = _appointment == null ? value : _appointment.Subject;
+            }
         }
 
         public DateTime StartTime
         {
             get { return _startTime; }
-            set { _startTime = _appointment.StartTime; }
+            set 
+            { 
+                _startTime = _appointment == null ? value: _appointment.StartTime; 
+            }
         }
 
         public DateTime EndTime
         {
             get { return _endTime; }
-            set { _endTime = _appointment.EndTime; }
+            set 
+            { 
+                _endTime = _appointment == null ? value : _appointment.EndTime; 
+            }
         }
 
         public List<Attendee> Attendees
         {
-            get { return _attendees; }           
+            get { return _attendees; }
+            set { _attendees = value; }
         }
         
         public string Location
         {
             get { return _location; }
-            set { _location = _appointment.Location; }
+            set 
+            { 
+                _location = _appointment == null ? value : _appointment.Location; 
+            }
         }
 
         public ScheduleAppointment ReturnAppointment()
         {
             return _appointment;
+        }
+
+        public string RequerencePattern
+        {
+            get { return _requerencePattern; }
+            set { _requerencePattern = value; }
         }
     }
 }

@@ -17,11 +17,11 @@ namespace ThisAppointmentApp
             InitializeComponent();
             
             var DayOverView = new NavigationPage(new DayOverview());
-            //var CurrentOverView = new NavigationPage(new AppointmentView());
+            var CurrentOverView = new NavigationPage(new AppointmentView());
             var WeekOverview = new NavigationPage(new WeekOverzicht());
 
             DayOverView.Title = "Day overview";
-            //CurrentOverView.Title = "Next appointment";
+            CurrentOverView.Title = "Next appointment";
             WeekOverview.Title = "Week overview";
 
             //Children.Add(CurrentOverView);

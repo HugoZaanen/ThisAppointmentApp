@@ -17,7 +17,9 @@ namespace ThisAppointmentApp
         {
             InitializeComponent();
             //MainPageViewModel model = new MainPageViewModel();
-            //list.ItemsSource = model.GetAppointments();            
+            //list.ItemsSource = model.GetAppointments();
+            ThisAppointmentApp.Models.Calendar calendar = new ThisAppointmentApp.Models.Calendar();
+            list.ItemsSource = calendar.GetTodayAppointments();           
         }
     }
 }

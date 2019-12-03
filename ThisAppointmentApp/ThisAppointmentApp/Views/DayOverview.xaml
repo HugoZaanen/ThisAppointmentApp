@@ -18,12 +18,25 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}"/>
-                                <Label Text="{Binding EndTime, StringFormat='{0:hh\\:mm}'}"/>
-                                <Label Text="{Binding Location}"/>
-                            </StackLayout>
+                            <FlexLayout>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}"/>
+                                    <Label Text="{Binding EndTime, StringFormat='{0:hh\\:mm}'}"/>
+                                    <Label Text="{Binding Location}"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <ListView FlowDirection="LeftToRight" ItemsSource="{Binding Attendees}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell Height="10">
+                                                    <Label Text="{Binding Name}"/>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </FlexLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
