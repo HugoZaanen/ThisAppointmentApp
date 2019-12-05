@@ -12,6 +12,7 @@ namespace ThisAppointmentApp.Models
         private IcsClient _client;
         List<AppointmentModel> appointments = new List<AppointmentModel>();
         Dictionary<string, DayOfWeek> stringToDay = new Dictionary<string, DayOfWeek>();
+
         char[] chars = { ';', '=' };
         string days;
         int interval = 1;
@@ -29,8 +30,8 @@ namespace ThisAppointmentApp.Models
             stringToDay.Add("WE", DayOfWeek.Wednesday);
             stringToDay.Add("TH", DayOfWeek.Thursday);
             stringToDay.Add("FR", DayOfWeek.Friday);
-
             _client = new IcsClient("https://calendar.google.com/calendar/ical/hugo%40letstalk.nl/public/basic.ics");
+
             foreach (var model in _client.GetModels())
             {
                 appointments.Add(model);
@@ -46,6 +47,8 @@ namespace ThisAppointmentApp.Models
                     }
                 }
             }
+
+            searchByname();
         }
 
         public static Calendar Instance
@@ -69,6 +72,12 @@ namespace ThisAppointmentApp.Models
         {
             var listAppointmentsModel = (from appointment in appointments where appointment.StartTime.Year == DateTime.Now.Year && appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Day == DateTime.Now.Day select appointment).ToList();
             return listAppointmentsModel;
+        }
+
+        public void searchByname()
+        {
+            var app = (from appointment in appointments where appointment.Name == "Afspraak voorbeeld 1 met deelnemers" select appointment).ToList();
+            var app1 = (from appointment in app where appointment.StartTime.Month == DateTime.Now.Month select appointment.StartTime.Date.ToString()).ToList();
         }
 
         AppointmentView _appointmentView;
@@ -211,7 +220,6 @@ namespace ThisAppointmentApp.Models
                     }
                 }
             }
-
             return RecurrenceAppointments;
         }
 
