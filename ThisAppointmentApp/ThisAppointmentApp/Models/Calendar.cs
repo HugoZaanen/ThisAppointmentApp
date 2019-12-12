@@ -1,6 +1,7 @@
 ﻿using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace ThisAppointmentApp.Models
         private IcsClient _client;
         List<AppointmentModel> appointments = new List<AppointmentModel>();
         Dictionary<string, DayOfWeek> stringToDay = new Dictionary<string, DayOfWeek>();
+        List<string> datesString = new List<string>();
 
         char[] chars = { ';', '=' };
         string days;
@@ -42,7 +44,7 @@ namespace ThisAppointmentApp.Models
                 if (appointments[i].RequerencePattern != null)
                 {
                     foreach (var appointment in CreateRecurringAppointments(appointments[i]))
-                    {
+                    {                        
                         appointments.Add(appointment);
                     }
                 }
@@ -71,13 +73,24 @@ namespace ThisAppointmentApp.Models
         public List<AppointmentModel> GetTodayAppointments()
         {
             var listAppointmentsModel = (from appointment in appointments where appointment.StartTime.Year == DateTime.Now.Year && appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Day == DateTime.Now.Day select appointment).ToList();
+            var va = (from appointment in appointments where appointment.Name == "daily interval 2" select appointment.Name).ToList();
+            List<string> list = new List<string>();
+            foreach (var m in appointments)
+            {
+                if (m.Name == "daily interval 2")
+                {
+                    var d = m.StartTime.ToString();
+                    list.Add(m.StartTime.ToString());
+                }
+            }
+            
             return listAppointmentsModel;
         }
 
         public void searchByname()
         {
-            var app = (from appointment in appointments where appointment.Name == "Afspraak voorbeeld 1 met deelnemers" select appointment).ToList();
-            var app1 = (from appointment in app where appointment.StartTime.Month == DateTime.Now.Month select appointment.StartTime.Date.ToString()).ToList();
+            var app = (from appointment in appointments where appointment.Name == "Afspraak voorbeeld 1 met deelnemers" select appointment.StartTime.ToString()).ToList();
+            //var app1 = (from appointment in app where appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Year == DateTime.Now.Year select appointment.StartTime.Date.ToString()).ToList();
         }
 
         AppointmentView _appointmentView;
@@ -154,7 +167,7 @@ namespace ThisAppointmentApp.Models
                 for (int i = 1; i < count; i++)
                 {
                     int dayNum = (int)placehDate.DayOfWeek;
-                    placehDate = placehDate.AddDays(interval * (7 * i));
+                    placehDate = placehDate.AddDays(interval * 7);
                     //model.StartTime = model.StartTime.AddDays(interval * (7 * i));
 
                     foreach (var str in dayStrings)
@@ -164,7 +177,8 @@ namespace ThisAppointmentApp.Models
                         if (!(placehDate.Day - detractNum <= 0))
                         {
                             DateTime recurrenceDate = new DateTime(placehDate.Year, placehDate.Month, placehDate.Day - detractNum, placehDate.Hour, placehDate.Minute, placehDate.Second);
-                            var da = recurrenceDate;
+                            var da = recurrenceDate.ToString();
+                            datesString.Add(da);
                             RecurrenceAppointments.Add(CreateRecurrentAppointment(model, interval, duration, i, recurrenceDate));
                         }
                     }
@@ -220,6 +234,7 @@ namespace ThisAppointmentApp.Models
                     }
                 }
             }
+            count = 100;
             return RecurrenceAppointments;
         }
 

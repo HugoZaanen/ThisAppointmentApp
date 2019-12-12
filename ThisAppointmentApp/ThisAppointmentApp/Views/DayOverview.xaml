@@ -7,40 +7,48 @@
              mc:Ignorable="d"
              x:Class="ThisAppointmentApp.DayOverview">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding DateTime, StringFormat='{0:T}'}" 
-                           TextColor="black" Grid.Column="1" FontSize="20" HorizontalTextAlignment="Center">
-                <Label.BindingContext>
-                    <local:ClockViewModel/>
-                </Label.BindingContext>
-            </Label>
-            <ListView x:Name="list" RowHeight="100">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <FlexLayout>
-                                <StackLayout>
-                                    <Label Text="{Binding Name}"/>
-                                    <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}"/>
-                                    <Label Text="{Binding EndTime, StringFormat='{0:hh\\:mm}'}"/>
-                                    <Label Text="{Binding Location}"/>
-                                </StackLayout>
-                                <StackLayout>
-                                    <ListView FlowDirection="LeftToRight" ItemsSource="{Binding Attendees}">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell Height="10">
-                                                    <Label Text="{Binding Name}"/>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </StackLayout>
-                            </FlexLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <FlexLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" 
+                           TextColor="black" Grid.Row="0" FontSize="20" HorizontalTextAlignment="Center">
+                    <Label.BindingContext>
+                        <local:ClockViewModel/>
+                    </Label.BindingContext>
+                </Label>
+                <ListView Grid.Row="1" x:Name="list" RowHeight="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                            <Label Text="{Binding Name}"/>
+                                            <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}"/>
+                                            <Label Text="{Binding EndTime, StringFormat='{0:hh\\:mm}'}"/>
+                                            <Label Text="{Binding Location}"/>
+                                        </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <ListView FlowDirection="LeftToRight" ItemsSource="{Binding Attendees}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell Height="5">
+                                                        <Label FontSize="10" Text="{Binding Name}"/>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>
