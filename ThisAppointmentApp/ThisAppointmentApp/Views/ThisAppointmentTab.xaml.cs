@@ -24,7 +24,7 @@ namespace ThisAppointmentApp
             CurrentOverView.Title = "Next appointment";
             WeekOverview.Title = "Week overview";
 
-            //Children.Add(CurrentOverView);
+            Children.Add(CurrentOverView);
             Children.Add(DayOverView);
             Children.Add(WeekOverview);
         }

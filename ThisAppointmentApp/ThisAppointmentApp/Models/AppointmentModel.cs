@@ -15,6 +15,8 @@ namespace ThisAppointmentApp.Models
         private ScheduleAppointment _appointment { get; set; }
         private string _requerencePattern { get; set; }
         private string _equipment { get; set; }
+        private int count = 0;
+        int index = 0;
         
         public AppointmentModel(ScheduleAppointment scheduleAppointment, List<Attendee> attendees,string requerencePattern)
         {
@@ -23,7 +25,7 @@ namespace ThisAppointmentApp.Models
             StartTime = StartTime;
             EndTime = EndTime;
             Location = Location;
-            RequerencePattern = requerencePattern;
+            RequerencePattern = requerencePattern;           
             _attendees = attendees;
         }
         
@@ -59,8 +61,18 @@ namespace ThisAppointmentApp.Models
 
         public List<Attendee> Attendees
         {
-            get { return _attendees; }
-            set { _attendees = value; }
+            get
+            {
+                return _attendees;
+            }
+            set 
+            {
+                if(this.Name == "daily interval 2")
+                {
+
+                }
+                _attendees = value; 
+            }
         }
         
         public string Location
@@ -82,5 +94,32 @@ namespace ThisAppointmentApp.Models
             get { return _requerencePattern; }
             set { _requerencePattern = value; }
         }
+
+        public List<Attendee> Attenders
+        {
+            get 
+            {               
+                count = count == 20 ? 0 : count;
+                List<Attendee> list = new List<Attendee>();
+
+                if (count < _attendees.Count)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        try
+                        {
+                            list.Add(_attendees[i + count]);
+                        }
+                        catch (Exception)
+                        {
+                            count += 5;
+                            return list;
+                        }
+                    }
+                }
+                count += 5;
+                return list;
+            }
+        }       
     }
 }

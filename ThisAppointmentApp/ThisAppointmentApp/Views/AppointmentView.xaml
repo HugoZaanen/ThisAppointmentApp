@@ -15,18 +15,18 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Text="{Binding DateTime, StringFormat='{0:T}'}" 
-                           TextColor="black" Grid.Column="1" FontSize="20" HorizontalTextAlignment="End">
+                           TextColor="black" Grid.Column="1" FontSize="20" HorizontalTextAlignment="End" >
                         <Label.BindingContext>
                             <local:ClockViewModel/>
                         </Label.BindingContext>
                     </Label>
                     <Label Text="Hello" TextColor="black" FontSize="20" HorizontalTextAlignment="End" Grid.Row="1" Grid.Column="1" x:Name="NextOccupied"/>
-                    <Label Text="Hello" x:Name="Name" TextColor="Black" FontSize="15" Grid.Row="1"/>
+                    <Label Text="Hello" x:Name="Name" TextColor="Black" FontSize="15" Grid.Row="0"/>
                     <Label Text="Location" x:Name="Location" TextColor="black" Grid.Row="2"/>
                     <Label Text="equipment" x:Name="Equipment" TextColor="black" Grid.Row="3"/>
                 </Grid>
@@ -53,8 +53,47 @@
                 </Frame>
                 <Frame FlexLayout.Basis="300" BorderColor="black">
                     <StackLayout>
-                        <Label Text="Participants" TextColor="Black" FontSize="12"/>
-                        <ListView FlowDirection="LeftToRight" x:Name="attendeesList" Grid.Row="1"/>
+                        <StackLayout>
+                            <Label Text="Participants" TextColor="Black" FontSize="12"/>
+                        </StackLayout>
+                        <FlexLayout>
+                            <ListView RowHeight="20"  FlowDirection="LeftToRight" x:Name="attendeesList">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label  Text="{Binding Name}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView RowHeight="20"  FlowDirection="LeftToRight" x:Name="attendeesList1">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label  Text="{Binding Name}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView RowHeight="20"  FlowDirection="LeftToRight" x:Name="attendeesList2">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label  Text="{Binding Name}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <ListView RowHeight="20"  FlowDirection="LeftToRight" x:Name="attendeesList3">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label  Text="{Binding Name}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </FlexLayout>
                     </StackLayout>
                 </Frame>
             </FlexLayout>

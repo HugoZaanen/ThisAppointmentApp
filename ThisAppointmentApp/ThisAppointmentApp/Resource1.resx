@@ -121,7 +121,7 @@
   <data name="HugoCalender" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>HugoCalender.ics;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MeetingsCalender" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Meetings_letstalk.nl_9e0i37n5ka7p3f3rnc4ucr52tg@group.calendar.google.com.ics;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LetsTalk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>LetsTalk.ics;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

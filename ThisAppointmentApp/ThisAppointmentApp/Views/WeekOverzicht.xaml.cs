@@ -15,12 +15,12 @@ namespace ThisAppointmentApp.Views
         public WeekOverzicht()
         {
             InitializeComponent();
-            //MainPageViewModel model = new MainPageViewModel();
-            //ThisAppointmentApp.Models.Calendar calendar = new ThisAppointmentApp.Models.Calendar();
-            //ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
-            //List<ScheduleAppointment> appointments = model.ScheduleAppointments;
+           
+            ThisAppointmentApp.Models.Calendar calendar = new ThisAppointmentApp.Models.Calendar();
+            ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
+            List<ScheduleAppointment> appointments = calendar.scheduleAppointments;
             
-            //schedule.DataSource = appointments;            
+            schedule.DataSource = appointments;            
         }
     }
 }

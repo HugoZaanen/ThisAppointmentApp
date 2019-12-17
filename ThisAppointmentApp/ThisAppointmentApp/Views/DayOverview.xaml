@@ -24,7 +24,6 @@
                             <ViewCell>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0">
                                             <Label Text="{Binding Name}"/>
@@ -33,15 +32,46 @@
                                             <Label Text="{Binding Location}"/>
                                         </StackLayout>
                                     <StackLayout Grid.Column="1">
-                                        <ListView FlowDirection="LeftToRight" ItemsSource="{Binding Attendees}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                            </Grid.ColumnDefinitions>
+                                            <ListView Grid.Column="0" RowHeight="15" ItemsSource="{Binding Attenders}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <ViewCell Height="5">
+                                                    <ViewCell >
                                                         <Label FontSize="10" Text="{Binding Name}"/>
                                                     </ViewCell>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
+                                            <ListView Grid.Column="1" RowHeight="15" ItemsSource="{Binding Attenders}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Label FontSize="10" Text="{Binding Name}"/>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                            <ListView Grid.Column="2" RowHeight="15" ItemsSource="{Binding Attenders}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Label FontSize="10" Text="{Binding Name}"/>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                            <ListView Grid.Column="3" RowHeight="15" ItemsSource="{Binding Attenders}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Label FontSize="10" Text="{Binding Name}"/>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                        </Grid>
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>

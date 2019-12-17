@@ -32,7 +32,7 @@ namespace ThisAppointmentApp
                     IList<Ical.Net.DataTypes.Attendee> attendees = calEvent.Attendees;
                     DateTime dateStart = new DateTime(calEvent.Start.Ticks);
                     DateTime dateEnd;
-                                       
+
                     if (calEvent.End != null)
                     {
                         dateEnd = new DateTime(calEvent.End.Ticks);
@@ -51,6 +51,7 @@ namespace ThisAppointmentApp
                         attender.Email = a.CommonName;
                         attending.Add(attender);
                     }
+                   
 
                     if (calEvent.RecurrenceRules != null && calEvent.RecurrenceRules.Count != 0)
                     {
@@ -67,16 +68,16 @@ namespace ThisAppointmentApp
                         {
                             recurrenceProperties.WeekDays = (WeekDays)pattern.ByDay[i].DayOfWeek;
                         }
-                       
+                                              
                         appointment = new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location};
-                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location },attending,stringPattern));
+                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, RecurrenceRule = stringPattern, Location = calEvent.Location },attending,stringPattern));                        
                     }
                     else
                     {
                         appointment = new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location };
-                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location },attending,null));
+                        AppointmentModels.Add(new AppointmentModel(new ScheduleAppointment() { StartTime = dateStart, EndTime = dateEnd, Subject = calEvent.Summary, IsRecursive = true, Location = calEvent.Location },attending,null));                        
                     }
-
+                    
                     ScheduleAppointments.Add(appointment);
                 }
             }

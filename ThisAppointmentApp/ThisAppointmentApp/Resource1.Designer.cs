@@ -73,9 +73,9 @@ namespace ThisAppointmentApp {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] MeetingsCalender {
+        internal static byte[] LetsTalk {
             get {
-                object obj = ResourceManager.GetObject("MeetingsCalender", resourceCulture);
+                object obj = ResourceManager.GetObject("LetsTalk", resourceCulture);
                 return ((byte[])(obj));
             }
         }

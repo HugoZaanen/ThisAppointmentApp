@@ -14,6 +14,7 @@ namespace ThisAppointmentApp.Models
         List<AppointmentModel> appointments = new List<AppointmentModel>();
         Dictionary<string, DayOfWeek> stringToDay = new Dictionary<string, DayOfWeek>();
         List<string> datesString = new List<string>();
+        public List<ScheduleAppointment> scheduleAppointments = new List<ScheduleAppointment>();
 
         char[] chars = { ';', '=' };
         string days;
@@ -50,7 +51,7 @@ namespace ThisAppointmentApp.Models
                 }
             }
 
-            searchByname();
+            scheduleAppointments = _client.ScheduleAppointments;
         }
 
         public static Calendar Instance
@@ -72,25 +73,8 @@ namespace ThisAppointmentApp.Models
 
         public List<AppointmentModel> GetTodayAppointments()
         {
-            var listAppointmentsModel = (from appointment in appointments where appointment.StartTime.Year == DateTime.Now.Year && appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Day == DateTime.Now.Day select appointment).ToList();
-            var va = (from appointment in appointments where appointment.Name == "daily interval 2" select appointment.Name).ToList();
-            List<string> list = new List<string>();
-            foreach (var m in appointments)
-            {
-                if (m.Name == "daily interval 2")
-                {
-                    var d = m.StartTime.ToString();
-                    list.Add(m.StartTime.ToString());
-                }
-            }
-            
+            var listAppointmentsModel = (from appointment in appointments where appointment.StartTime.Year == DateTime.Now.Year && appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Day == DateTime.Now.Day select appointment).ToList();                                 
             return listAppointmentsModel;
-        }
-
-        public void searchByname()
-        {
-            var app = (from appointment in appointments where appointment.Name == "Afspraak voorbeeld 1 met deelnemers" select appointment.StartTime.ToString()).ToList();
-            //var app1 = (from appointment in app where appointment.StartTime.Month == DateTime.Now.Month && appointment.StartTime.Year == DateTime.Now.Year select appointment.StartTime.Date.ToString()).ToList();
         }
 
         AppointmentView _appointmentView;
@@ -168,8 +152,7 @@ namespace ThisAppointmentApp.Models
                 {
                     int dayNum = (int)placehDate.DayOfWeek;
                     placehDate = placehDate.AddDays(interval * 7);
-                    //model.StartTime = model.StartTime.AddDays(interval * (7 * i));
-
+                   
                     foreach (var str in dayStrings)
                     {
                         var dayNumWeek = (int)stringToDay[str];
@@ -259,5 +242,18 @@ namespace ThisAppointmentApp.Models
             mod.Location = model.Location;
             return mod;
         }
+
+        public AppointmentModel returnNowAppointment()
+        {                      
+            return (from app in appointments where app.StartTime.Year == DateTime.Now.Year && app.StartTime.Month == DateTime.Now.Month && app.StartTime.Day == DateTime.Now.Day && (app.StartTime.Hour >= DateTime.Now.Hour && app.EndTime.Hour <= DateTime.Now.Hour) select app).First();
+        } 
+
+        //public List<AppointmentModel> WeekOrganizer(DayOfWeek d)
+        //{            
+        //    var day = DateTime.Now.Day;
+
+                
+        //    return (from app in appointments where app.StartTime.Year == DateTime.Now.Year && app.StartTime.Month == DateTime.Now.Month && app.StartTime.Day ==  );
+        //}
     }
 }

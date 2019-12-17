@@ -11,25 +11,23 @@ namespace ThisAppointmentApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppointmentView : ContentPage
-    {
+    {  
         public AppointmentView()
         {
-            InitializeComponent();            
+            InitializeComponent();
             ThisAppointmentApp.Models.Calendar calendar = new ThisAppointmentApp.Models.Calendar();
-           
-            //Name.Text = meeting[0].Name;
-            //Location.Text = meeting[0].Location;
-            //StartTime.Text = meeting[0].Start.ToString("hh:mm");
-            //EndTime.Text = meeting[0].End.ToString("hh:mm");
-            //var attendees = meeting[0].Attendees;
+            var appoint = calendar.returnNowAppointment();
+            
+            Name.Text = appoint.Name;
+            Location.Text = appoint.Location;
+            StartTime.Text = appoint.StartTime.ToString("hh:mm");
+            EndTime.Text = appoint.EndTime.ToString("hh:mm");
+            var attendees = appoint.Attendees;
 
-            List<string> attendeesNames = new List<string>();
-
-            //foreach (var attendee in attendees)
-            //{
-            //    attendeesNames.Add(attendee.Name);
-            //}
-            //attendeesList.ItemsSource = attendeesNames;
+            attendeesList.ItemsSource = appoint.Attenders;
+            attendeesList1.ItemsSource = appoint.Attenders;
+            attendeesList2.ItemsSource = appoint.Attenders;
+            attendeesList3.ItemsSource = appoint.Attenders;           
         }
     }
 }
